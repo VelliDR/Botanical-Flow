@@ -1,0 +1,46 @@
+:root {
+    /* Base */
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.6);
+    
+    /* Colors */
+    --kiwi-color: #8BC34A; 
+    --strawberry-color: #FF3366;
+    --debt-color: #FF3B30;
+    
+    /* Glassmorphism */
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --card-border: rgba(255, 255, 255, 0.06);
+    
+    /* Dynamic Context */
+    --accent-color: var(--kiwi-color);
+    --accent-glow: rgba(139, 195, 74, 0.2);
+}
+
+body.kiwi {
+    --accent-color: var(--kiwi-color);
+    --accent-glow: rgba(139, 195, 74, 0.2);
+}
+
+body.strawberry {
+    --accent-color: var(--strawberry-color);
+    --accent-glow: rgba(255, 51, 102, 0.2);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}

@@ -1,0 +1,347 @@
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    min-width: 340px;
+    max-width: 90vw;
+}
+
+/* Mode Selector */
+.mode-selector-container {
+    display: flex;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+}
+
+.mode-selector-container label {
+    margin: 0;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.mode-label {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="radio"]:checked + .mode-label {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Seed Capsule */
+.seed-container {
+    --fill-percent: 0%;
+    position: relative;
+    width: 120px;
+    height: 180px;
+    filter: drop-shadow(0 0 16px var(--accent-glow));
+    transition: filter 0.3s ease;
+}
+
+.seed-outline {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.seed-clip-wrapper {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    clip-path: path('M50 0 C50 0, 100 70, 100 100 C100 127.6, 77.6 150, 50 150 C22.4 150, 0 127.6, 0 100 C0 70, 50 0, 50 0 Z');
+    -webkit-clip-path: path('M50 0 C50 0, 100 70, 100 100 C100 127.6, 77.6 150, 50 150 C22.4 150, 0 127.6, 0 100 C0 70, 50 0, 50 0 Z');
+    z-index: 1;
+}
+
+.seed-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--fill-percent);
+    background: var(--accent-color);
+    /* 0.8s cubic-bezier as requested for hardware accelerated smooth fluid fill */
+    transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+
+/* Time Displays */
+.displays {
+    text-align: center;
+    width: 100%;
+}
+
+.time-display {
+    font-size: 3.5rem;
+    font-weight: 200;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1;
+}
+
+.credit-display {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    font-variant-numeric: tabular-nums;
+    margin: 12px 0 0 0;
+    transition: color 0.3s ease;
+}
+
+.credit-display.debt {
+    color: var(--debt-color);
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn {
+    flex: 1;
+    min-width: 120px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    color: #fff;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--accent-glow);
+}
+
+/* FAZ 2: Haptic and Backup Reminder */
+@keyframes hapticPulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    100% { box-shadow: 0 0 0 16px rgba(255, 255, 255, 0); }
+}
+
+.haptic-pulse {
+    animation: hapticPulse 150ms ease-out;
+}
+
+.backup-reminder {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 24px;
+    z-index: 100;
+    gap: 12px;
+    min-width: 300px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.8);
+}
+
+.backup-date {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 0 0 8px 0;
+}
+
+/* FAZ 3: Showcase & Ambient HUD */
+.ambient-hud {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #000000;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.ambient-time {
+    font-size: 20vw;
+    font-weight: 100;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+    line-height: 1;
+}
+
+.ambient-status {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+.btn-showcase {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: auto;
+    padding: 10px 16px;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+}
+
+.showcase-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    max-height: 85vh;
+    overflow-y: auto;
+    width: 90vw;
+    max-width: 600px;
+}
+
+.badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+.badge-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px;
+    border-radius: 16px;
+    text-align: center;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.badge-item.unlocked {
+    opacity: 1;
+    filter: none;
+    border-color: var(--accent-glow);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes badgeHoverBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.1); }
+}
+
+.badge-item.unlocked:hover .badge-icon {
+    animation: badgeHoverBounce 0.5s ease-in-out infinite;
+    text-shadow: 0 0 16px var(--accent-glow);
+}
+
+.badge-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.badge-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.badge-desc {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* Heatmap Styles */
+.heatmap-container {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+}
+
+.heatmap-title {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 0 0 12px 0;
+    text-align: center;
+}
+
+.heatmap-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+}
+
+.heatmap-cell {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.heatmap-cell[data-intensity="1"] { background: rgba(139, 195, 74, 0.3); }
+.heatmap-cell[data-intensity="2"] { background: rgba(139, 195, 74, 0.6); }
+.heatmap-cell[data-intensity="3"] { background: rgba(139, 195, 74, 0.9); box-shadow: 0 0 8px rgba(139, 195, 74, 0.4); }
+
+.badge-notification {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 32px;
+    z-index: 300;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.8);
+    animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+    from { top: -100px; opacity: 0; }
+    to { top: 24px; opacity: 1; }
+}

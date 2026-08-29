@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Botanical Flow</title>
+    
+    <!-- PWA Manifest & Icons -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="kiwi.png">
+    <meta name="theme-color" content="#8BC34A">
+    <link rel="apple-touch-icon" href="kiwi.png">
+
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/hud.css">
+    <style>body { background-color: #000; color: #fff; margin: 0; padding: 0; visibility: hidden; } html.loaded body { visibility: visible; }</style>
+    <script>window.addEventListener('DOMContentLoaded', () => document.documentElement.classList.add('loaded'));</script>
+</head>
+<body class="kiwi">
+    <!-- Ambient HUD -->
+    <div id="ambient-hud" class="ambient-hud" style="display: none;">
+        <img id="ambient-mode-icon" src="kiwi.png" style="width: 120px; height: 120px; object-fit: contain; opacity: 0.3; margin-bottom: 24px;">
+        <h1 id="ambient-time" class="ambient-time">00:00</h1>
+        <p id="ambient-status" class="ambient-status">🥝 Kivi • IDLE</p>
+    </div>
+
+    <!-- Top Right Showcase Button -->
+    <button id="btn-showcase" class="btn btn-showcase">🏆 Vitrin</button>
+
+    <div class="glass-card">
+        <img id="ui-mode-icon" src="kiwi.png" alt="Mode Icon" style="width: 72px; height: 72px; object-fit: contain; margin-top: -16px; filter: drop-shadow(0 0 16px var(--accent-glow)); transition: all 0.3s ease;">
+        
+        <div class="mode-selector-container">
+            <label>
+                <input type="radio" name="mode" value="kiwi" checked>
+                <span class="mode-label">🥝 Kivi (3:1)</span>
+            </label>
+            <label>
+                <input type="radio" name="mode" value="strawberry">
+                <span class="mode-label">🍓 Çilek (2:1)</span>
+            </label>
+        </div>
+
+        <div class="seed-container" id="seed-container">
+            <!-- SVG Outline -->
+            <svg class="seed-outline" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 0 C50 0, 100 70, 100 100 C100 127.6, 77.6 150, 50 150 C22.4 150, 0 127.6, 0 100 C0 70, 50 0, 50 0 Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+            </svg>
+            <!-- SVG Mask / Clip Path Wrapper for Fill -->
+            <div class="seed-clip-wrapper">
+                <div class="seed-fill"></div>
+            </div>
+        </div>
+
+        <div class="displays">
+            <h1 class="time-display" id="time-display">00:00</h1>
+            <h3 class="credit-display" id="credit-display">Kredi: 00:00</h3>
+        </div>
+
+        <div class="controls">
+            <button id="btn-work" class="btn btn-primary">Çalışmaya Başla</button>
+            <button id="btn-break" class="btn" style="display: none;">Mola Ver</button>
+            <button id="btn-stop" class="btn" style="display: none;">Durdur</button>
+        </div>
+    </div>
+    
+    <!-- Backup Reminder Modal -->
+    <div id="backup-reminder" class="glass-card backup-reminder" style="display: none;">
+        <p style="margin: 0; font-weight: 500;">Seansınız bitti!</p>
+        <p class="backup-date">Son Yedekleme: <span id="last-backup-date">Bilinmiyor</span></p>
+        <button id="btn-export" class="btn btn-primary" style="padding: 10px;">Veriyi Yedekle (JSON)</button>
+        <button id="btn-close-backup" class="btn" style="padding: 10px;">Kapat</button>
+    </div>
+
+    <!-- Showcase Modal -->
+    <div id="badge-showcase" class="glass-card showcase-modal" style="display: none;">
+        <h2 style="margin-top: 0;">Kanonik Rozetler</h2>
+        <div id="activity-heatmap" class="heatmap-container">
+            <h3 class="heatmap-title">Son 30 Günlük Odak</h3>
+            <div id="heatmap-grid" class="heatmap-grid"></div>
+        </div>
+        <div id="badge-list" class="badge-grid"></div>
+        <button id="btn-close-showcase" class="btn btn-primary" style="margin-top: 16px;">Kapat</button>
+    </div>
+
+    <!-- Badge Notification -->
+    <div id="badge-notification" class="glass-card badge-notification" style="display: none;">
+        <p style="margin: 0; font-weight: bold; color: var(--accent-color);">🏆 Yeni Rozet Kazanıldı!</p>
+        <div id="new-badges-container" style="display: flex; gap: 12px; margin-top: 12px; align-items: center; justify-content: center;"></div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

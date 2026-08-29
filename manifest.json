@@ -1,0 +1,22 @@
+{
+  "name": "Botanical Flow",
+  "short_name": "Botanical",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#8BC34A",
+  "description": "Kivi ve Çilek modlarıyla esnek zaman yönetimi.",
+  "icons": [
+    {
+      "src": "kiwi.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "strawberry.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
