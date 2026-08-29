@@ -53,8 +53,11 @@ input[type="radio"]:checked + .mode-label {
 .seed-container {
     --fill-percent: 0%;
     position: relative;
-    width: 120px;
-    height: 180px;
+    width: 100px;
+    height: 150px;
+    transform: scale(1.2);
+    transform-origin: center;
+    margin: 15px 0;
     filter: drop-shadow(0 0 16px var(--accent-glow));
     transition: filter 0.3s ease;
 }
