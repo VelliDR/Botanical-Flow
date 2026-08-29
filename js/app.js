@@ -79,11 +79,28 @@ document.addEventListener('dblclick', (e) => {
         el.mainCard.style.opacity = '0';
         el.mainCard.style.pointerEvents = 'none';
         el.btnShowcase.style.display = 'none';
+        
+        try {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            }
+        } catch (e) {}
+        
     } else {
         el.ambientHud.style.display = 'none';
         el.mainCard.style.opacity = '1';
         el.mainCard.style.pointerEvents = 'auto';
         el.btnShowcase.style.display = 'block';
+        
+        try {
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitFullscreenElement && document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        } catch (e) {}
     }
     // Zorunlu UI güncellemesi tetikle
     store.notify();

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'botanical-flow-v4';
+const CACHE_NAME = 'botanical-flow-v5';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
