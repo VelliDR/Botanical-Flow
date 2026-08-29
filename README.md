@@ -8,8 +8,8 @@ Masaüstü ve mobil (özellikle iOS/WebKit) cihazlarda %100 uyumlu, yüksek perf
 
 *   **Esnek Kredi Sistemi:** Katı "25 dk çalış, 5 dk dinlen" kuralı yerine, ne kadar çalışırsanız o kadar mola kredisi kazanırsınız. Kazandığınız mola kredilerini isterseniz hemen kullanabilir, isterseniz biriktirerek uzun bir molaya çıkabilirsiniz.
 *   **İki Farklı Mod:**
-    *   🥝 **Kivi Modu:** Yoğun odaklanma ve hızlı dinlenme için ideal (5 dakikalık çalışma = 1 dakika mola).
-    *   🍓 **Çilek Modu:** Derin odaklanma ve daha esnek dinlenme için ideal (3 dakikalık çalışma = 1 dakika mola).
+    *   🥝 **Kivi Modu:** Yoğun odaklanma ve hızlı dinlenme için ideal (3 dakikalık çalışma = 1 dakika mola).
+    *   🍓 **Çilek Modu:** Derin odaklanma ve daha esnek dinlenme için ideal (2 dakikalık çalışma = 1 dakika mola).
 *   **Ambient HUD (Ambiyans Modu):** Ekrana çift tıkladığınızda dikkatinizi dağıtmayan, pilden tasarruf eden devasa, karanlık bir ambiyans moduna geçersiniz.
 *   **Oyunlaştırma ve Başarımlar (Kanonik Rozetler):** Odaklanma alışkanlıklarınızı analiz eden ve size özel rozetler kazandıran bir "Vitrin" (Showcase). Örneğin: "Gece Nöbeti", "Mükemmel Döngü", "Şafak Vakti".
 *   **Isı Haritası (Heatmap):** GitHub katkı grafiği tarzında tasarlanmış, son 30 günlük çalışma yoğunluğunuzu gün gün gösteren büyüme takvimi.
