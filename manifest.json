@@ -4,7 +4,7 @@
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#8BC34A",
+  "theme_color": "#000000",
   "description": "Kivi ve Çilek modlarıyla esnek zaman yönetimi.",
   "icons": [
     {
